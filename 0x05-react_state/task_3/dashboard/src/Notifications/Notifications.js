@@ -1,7 +1,7 @@
 import React from 'react';
 import closeIcon from '../assets/close-icon.png';
 import NotificationItem from './NotificationItem';
-import PropeTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import NotificationItemShape from './NotificationItemShape';
 import { StyleSheet, css } from 'aphrodite';
 
@@ -58,7 +58,7 @@ class Notifications extends React.PureComponent {
                   value={val.value}
                   html={val.html}
                   key={val.id}
-                  markAsRead={this.markAsRead}
+                  markAsRead={this.props.markNotificationAsRead}
                   id={val.id}
                 />
                 })
@@ -131,15 +131,17 @@ const notificationStyles = StyleSheet.create({
 Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: [],
-  handleDisplayDrawer: () => {},
   handleHideDrawer: () => {},
+  handleDisplayDrawer: () => {},
+  markNotificationAsRead: () => {}
 };
 
 Notifications.propTypes = {
-  displayDrawer: PropeTypes.bool,
-  listNotifications: PropeTypes.arrayOf(NotificationItemShape),
-  handleDisplayDrawer: PropeTypes.func,
-  handleHideDrawer: PropeTypes.func,
+  displayDrawer: PropTypes.bool,
+  listNotifications: PropTypes.arrayOf(NotificationItemShape),
+  handleHideDrawer: PropTypes.func,
+  handleDisplayDrawer: PropTypes.func,
+  markNotificationAsRead: PropTypes.func
 };
 
 export default Notifications;

@@ -3,6 +3,7 @@ import { shallow, mount } from 'enzyme';
 import { jest } from '@jest/globals';
 import App from './App';
 import { StyleSheetTestUtils } from 'aphrodite';
+import { AppContext, user, logOut } from './AppContext';
 
 describe('Test App.js', () => {
   let wrapper;
@@ -42,11 +43,11 @@ describe("Testing <App isLoggedIn={true} />", () => {
 
   beforeEach(() => {
     StyleSheetTestUtils.suppressStyleInjection();
-    wrapper = shallow(<App isLoggedIn={true}/>);
+    wrapper = shallow(<App/>);
   });
 
-  it("the Login component is not included", () => {
-    expect(wrapper.find('Login')).toHaveLength(0);
+  it("the Login component is  included", () => {
+    expect(wrapper.find('Login')).toHaveLength(1);
   });
 
   it("the CourseList component is included", () => {

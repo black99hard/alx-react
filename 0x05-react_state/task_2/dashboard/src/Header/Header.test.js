@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from './Header';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { StyleSheetTestUtils } from 'aphrodite';
+import { AppContext } from '../App/AppContext';
 
 
 describe('Testing <Header /> Component', () => {
@@ -11,6 +12,10 @@ describe('Testing <Header /> Component', () => {
     StyleSheetTestUtils.suppressStyleInjection();
     wrapper = shallow(<Header />);
   });
+
+  afterEach(() => {
+		jest.clearAllMocks();
+	});
 
   it("Renders with out crashing", () => {
     expect(wrapper).toBeDefined();
